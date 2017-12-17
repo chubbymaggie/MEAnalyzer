@@ -1,3 +1,160 @@
+v1.38.0 r108
+
+Added proper ME 7-10 & TXE 0-2 SKU detection
+Added correct ME 7-8 Platform detection
+Improved CSME 11.0 analysis performance
+Improved SPS 2-3 Firmware Type detection
+Limited false positive $FPT detections
+Renamed ME 7-10 "Apple Mac" SKU to "Slim"
+Extensive ME, TXE & SPS code clean-up
+
+v1.36.0 r107
+
+Added SPS 2-3 Platform & SKU detection
+Improved Engine firmware Manifest detection
+Improved CSTXE 4.0 GeminiLake firmware support
+Improved CS(ME) Partial Update images detection
+Fixed crash at Variant detection of new firmware
+Fixed issues at CSTXE 3-4 Platform & SoC detection
+Fixed issue when determining input file end offset
+Fixed issue when adjusting FTPR Manifest via $FPT
+MEA now scans Operational partition at EXTR CS(SPS)
+MEA now scans Recovery partition at ME 6.0 Ignition
+Removed & restructured code for better performance
+
+v1.34.1 r106
+
+Set Intel-SA-00086 vulnerable firmware as Outdated
+CSE unpack does not attempt Huffman 12 decompression
+
+v1.34.0 r105
+
+Added CSSPS 4 Platform & SKU initial detection
+Added CSTXE FD Device Expansion Data detection
+Improved Family, RSA Key & Signature detection
+Improved CSE unpacking $FPT offset detection
+Improved Initialized CSTXE 3 Type detection
+Improved SoC Revision display for CSTXE 4
+Database now uses SHA-256 firmware hashes
+Removed Flash Descriptor Lock detection
+Removed AMT 1 Tekoa GbE detection
+
+v1.33.0 r104
+
+Added support for CSTXE 3.1 & 3.3 firmware
+Fixed wrong Secondary BPDT Offset & Size detection
+Fixed wrong CSTXE 3.2 SoC Stepping detection
+Parameter -adir now works under Linux & macOS
+
+v1.32.3 r103
+
+Improved CSME 12 SPI FD Region structures detection
+
+v1.32.2 r102
+
+Added Huffman11 as git submodule, thanks rickmark
+Fixed CSE parsing bug at max-padded (0x2000) $CPD
+Fixed PCH Revision display for CSME 11.21 firmware
+
+v1.32.0 r101
+
+Added support for CSME 11.8, 11.11 & 11.21 firmware
+Added support for CSME 12 SPI FD Region structures
+Added CSE Extension 22 for proper CSME 12 parsing
+Added CSE Extension 14 Mod for proper DNX parsing
+Added CSE Extension 5 Mod for proper Process parsing
+Added CSE Extension data overflow error detection
+Added CSE Extension data division error detection
+Added CSE Extension data total size error detection
+Improved CSE Extensions 1, 13 with CSME 12 support
+Improved CSE Extension structure Revision detection
+Fixed CSE unpacking crash at Key modules/regions
+Fixed issues at unknown CSE Extension detection
+Fixed wrong CSME 11 FIT PCH-H Z370 SKU detection
+
+v1.30.0 r100
+
+Added parsing of all Bit-Flag/Mask/Map fields in structures
+Vastly improved Engine x86 unpacking & info display (-unp86)
+Improved Empty $FPT/BPDT Partition detection & display (-dfpt)
+Improved Family (ME/TXE/SPS/CSME/CSTXE/CSSPS) & RSA PKey detection
+Fixed missing CPD_Ext_05.MainThreadID field, thanks IllegalArgument
+MEA now deletes Engine x86 compressed files with OK hash (-unp86)
+MEA can now decompress all CSME 11 Huffman modules via Huffman11
+MEA can now run without Huffman11, error when needed but missing
+Removed OEM ME Recovery UEFI FFS 821D110C[...] module detection
+Multiple general other code & text fixes and improvements
+
+v1.20.1 r99
+
+Improved IFWI detection, Recovery BPDT (00AA55AA)
+
+v1.20.0 r99
+
+Added support for TXE 4.0 GeminiLake firmware
+Added input file scanning progress counter (x/y)
+Improved ME 12.x & TXE 3.x PRE Release detection
+Improved Integrated Firmware Image (IFWI) detection
+Dropped UEFI BIOS Updater support (-ubu, -ubupre)
+Renamed parameter -multi to -check, same function
+Removed parameter -aecho for alt empty line display
+
+v1.18.0
+
+Added Integrated Firmware Image (IFWI) support
+Added support for ME 12.0 CannonLake firmware
+Improved detection of Engine x86 ME/TXE Family
+Improved support of TXE 3 ApolloLake firmware
+Fixed crash at ME 11.x SKU Type detection
+Fixed missing SPS Unknown Major detection
+Various Engine x86 fixes and improvements
+Updated Engine Firmware Repository Database to r98
+
+v1.16.7
+
+Added detection of ME 11.x Power Down Mitigation (PDM)
+Added robust SKU detection via Kernel for older ME 11.0
+Fixed Engine x86 false positive ROM-Bypass Release detection
+MEA now requires Huffman11 3rd-party dependency (Github)
+Updated Engine Firmware Repository Database to r97
+
+v1.16.6
+
+Added Engine x86 $CPD Extensions 14, 19, 20, 21 and 50
+Added Engine x86 Extension info printing while unpacking (-ext86)
+Added Engine x86 Extension info unpacking report storing (-unp86)
+Added Engine x86 Metadata Hash validation when unpacking (-unp86)
+Added Engine x86 $FPT checksum validation when unpacking (-unp86)
+Added Engine x86 unimplemented $CPD Extensions detection (-unp86)
+Added better Apollo Lake SPI firmware unpacking & checks (-unp86)
+Fixed Engine x86 Module/Metadata Empty/Missing detection (-unp86)
+Fixed Engine x86 Empty/Missing Partition/Module skipping (-unp86)
+Fixed Engine x86 Key RSA Signature check when unpacking (-unp86)
+Fixed Engine x86 bug at Empty $CPD Entry detection (-unp86)
+Fixed Engine x86 bug at failed LZMA decompressions (-unp86)
+Fixed crash at APL IBBP $CPD Partition unpacking (-unp86)
+Fixed mistakes at CPD_Ext_10 & CPD_Ext_0E_Mod structures
+MEA now uses & requires PTable 3rd-party dependency (pip)
+Updated Engine Firmware Repository Database to r96
+
+v1.16.3
+
+Added Engine x86 $CPD Extensions 16 (0x10) & 19 (0x13)
+Added Engine x86 Huffman Python decompression via Huffman11 (-unp86)
+Added Engine x86 $CPD checksum validation when unpacking (-unp86)
+Greatly improved unpacking of TXE 3 & APL SPI firmware (-unp86)
+Improved Engine x86 $CPD detection via more robust patterns
+Fixed Engine x86 unpacking crash at duplicate names (-unp86)
+Fixed Engine x86 unpacking crash at empty RSA block (-unp86)
+Fixed Engine x86 unpacking crash when using MEA.exe (-unp86)
+Updated Engine Firmware Repository Database to r95
+
+v1.16.1
+
+Brought back SPS firmware detection, no support
+Improved unpacked firmware folder names (-unp86)
+Updated Engine Firmware Repository Database to r94
+
 v1.16.0
 
 MEA can now fully unpack all Engine x86 firmware (-unp86)
@@ -195,7 +352,7 @@ Updated Intel Engine Firmware Repository Database to r64
 v1.6.1
 
 Added ME 11.6 KBL firmware detection
-Impoved ME 11.x SKU detection based on Kernel
+Improved ME 11.x SKU detection based on Kernel
 Updated Intel Engine Firmware Repository Database to r63
 
 v1.6.0
