@@ -1,3 +1,109 @@
+v1.55.0 r122
+
+Added built-in CSE Huffman Decompressor ***
+Added ignoring of known bad CSE hashes
+Added CSE PMC APL/BXT/GLK/CNP support
+Improved (CS)ME analysis performance
+Improved CSE & PMC variant detection
+Improved partition overlap detection
+Improved Flash Descriptor detection
+Improved ME 7 RGN/EXTR over UPD policy
+Removed CSME 11 OEM FIT SKU detection
+Removed UEFIFind Engine GUID detection
+Fixed "not in DB" message not showing
+Fixed empty RSA block validation error
+Fixed wrong empty $FPT entries offset
+
+*** CSE Huffman Loader & Decompressor by IllegalArgument
+*** CSE Huffman Dictionaries by PT Research & IllegalArgument
+
+v1.51.2 r121
+
+Improved CSME 12 Stepping detection
+Fixed crashes under rare circumstances
+
+v1.51.0 r120
+
+Added CSE PMC unpacking & size validation
+Improved firmware with messages handling
+Fixed issues under rare circumstances
+
+v1.50.0 r119
+
+Added CSE PMC 300 CNP firmware support
+Added CNP CSE-PMC compatibility checks
+Added CNP CSME with PMC stitch detection
+Improved CSME 12 FWUpdate Type detection
+Improved CSME 12 SKU & Stepping detection
+
+v1.48.0 r118
+
+Added CSME 12 FWUpdate Type support
+Fixed issues under rare circumstances
+
+v1.46.1 r117
+
+Fixed crashes under rare circumstances
+
+v1.46.0 r117
+
+Added CSE OEM/ODM Configuration & Signing status
+Added CSE and TXE OEM/ODM Unlock Token status
+Added parameter -redir for Console Redirection
+Improved CSE Extension 0x15 Payload Knob support
+Removed parameter -check, now default action
+Fixed missing MEA header when using -skip
+MEA now displays all info in more detail
+
+v1.44.1 r116
+
+Adjusted CSME 12 SKU Platform detection behavior
+
+v1.44.0 r115
+
+Added CSE Extensions 24, 25 & 26
+Added $CPD Revision 2 support
+Improved BPDT v1 & v2 support
+
+v1.43.0 r112
+
+Added CSE BPDT Unlock Token (UTOK) info unpacking
+Added parameter -exit to skip Press enter to exit prompt
+MEA now checks & allows supported Python versions only
+Improved table text & line output visuals
+
+v1.42.1 r111
+
+Improved ME 6 Ignition IBX/CCK SKU distinction
+
+v1.42.0 r110
+
+Added full support for CSME 12.0 firmware
+Added CSE Extensions 0x11, 0x16 and 0x14 R2
+Added CSE Layout Table (LT) v1.6 & v1.7 support
+Added Flash Partition Table ($FPT) v2.1 support
+Added Boot Partition Descriptor Table (BPDT) v2-3 support
+Added $FPT, BPDT & CSE LT partition overlap detection
+Added CSE $FPT, BPDT & CSE Layout Table unpacking
+Added CSE Partition Instance ID unpacking display
+Added CSE partition OEM/FIT customization detection
+Added CSE partition Hash & Size validation in all cases
+Added CSE partition out-of-bounds Module detection
+Added CSE UTFL structure at UTOK/STKN unpacking
+Added CSE Layout Table entries info display (-dfpt)
+Added ME 8-10 $FPT Partition Instance ID display
+Improved CSE Extensions 0x3, 0xE, 0xF, 0x10 & 0x14 R1
+Improved $FPT and BPDT entries info display (-dfpt)
+Improved $CPD Entry Counter for end offset detection
+Fixed CSE unpacking metadata text filename collision
+Fixed false positive BPDT S-BPDT & CSE_BUP detection
+Fixed wrong Manifest detection at Intel SPS capsules
+Fixed wrong CSE firmware analysis messages position
+
+v1.38.1 r109
+
+Fixed wrong SPS 2-3 Firmware Type detection
+
 v1.38.0 r108
 
 Added proper ME 7-10 & TXE 0-2 SKU detection

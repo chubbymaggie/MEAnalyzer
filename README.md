@@ -3,38 +3,38 @@ Intel Engine Firmware Analysis Tool
 
 [ME Analyzer News Feed](https://twitter.com/platomaniac)
 
-[ME Analyzer Discussion Topic](http://www.win-raid.com/t840f39-ME-Analyzer-Intel-Engine-Firmware-Analysis-Tool.html#msg14803)
+[ME Analyzer Discussion Topic](https://www.win-raid.com/t840f39-ME-Analyzer-Intel-Engine-Firmware-Analysis-Tool-Discussion.html)
+
+[Intel Engine Firmware Repositories](https://www.win-raid.com/t832f39-Intel-Engine-Firmware-Repositories.html)
 
 [![ME Analyzer Donation](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=DJDZD3PRGCSCL)
 
-![](https://i.imgur.com/w0fWmPx.png)
+![](https://i.imgur.com/VOp78Or.png)
 
 ## **A. About ME Analyzer**
 
-ME Analyzer is a tool which parses Intel Engine firmware images from the Converged Security Management Engine, Converged Security Trusted Execution Engine, Converged Security Server Platform Services, Management Engine, Trusted Execution Engine & Server Platform Services families. It can be used by end-users who are looking for all relevant firmware information such as Family, Version, Release, Type, Date, SKU, Platform etc. It is capable of detecting new/unknown firmware, checking firmware health, Updated/Outdated status and many more. ME Analyzer is also a powerful Engine firmware research analysis tool with multiple structures which allow, among others, full parsing and unpacking of Converged Security Engine (CSE) firmware, Flash Partition Table (FPT) & Boot Partition Descriptor Table (BPDT/IFWI), advanced Size detection etc. Moreover, with the help of its extensive database, ME Analyzer is capable of uniquely categorizing all supported Engine firmware as well as check for any firmware which have not been stored at the Intel Engine Firmware Repositories yet.
+ME Analyzer is a tool which parses Intel Engine & PMC firmware images from the Converged Security Management Engine, Converged Security Trusted Execution Engine, Converged Security Server Platform Services, Management Engine, Trusted Execution Engine, Server Platform Services & Power Management Controller families. It can be used by end-users who are looking for all relevant firmware information such as Family, Version, Release, Type, Date, SKU, Platform etc. It is capable of detecting new/unknown firmware, checking firmware health, Updated/Outdated status and many more. ME Analyzer is also a powerful Engine firmware research analysis tool with multiple structures which allow, among others, full parsing and unpacking of Converged Security Engine (CSE) firmware, Flash Partition Table (FPT), Boot Partition Descriptor Table (BPDT/IFWI), CSE Layout Table (LT), advanced Size detection etc. Moreover, with the help of its extensive database, ME Analyzer is capable of uniquely categorizing all supported Engine firmware as well as check for any firmware which have not been stored at the Intel Engine Firmware Repositories yet.
 
 #### **A1. ME Analyzer Features**
 
-- Supports all Engine firmware Families (CS)ME 2-12, (CS)TXE 1-4, (CS)SPS 1-4
+- Supports all Engine firmware Families (CS)ME 2-12, (CS)TXE 0-4, (CS)SPS 1-4
 - Supports all types of firmware images (Engine Regions, SPI/BIOS etc)
 - Detection of Family, Version, SKU, Date, Revision, Platform etc info
 - Detection of Production, Pre-Production, ROM-Bypass etc Releases
 - Detection of Region (Stock/clean or Extracted/dirty), Update etc Types
 - Detection of Security Version Number (SVN), Version Control Number (VCN) & PV
+- Detection of Power Management Controller (PMC) firmware Version, SKU etc
 - Detection of whether the imported Engine firmware is updated or not
 - Detection of unusual Engine firmware (Corrupted, Compressed, OEM etc)
-- Ability to unpack CSE firmware CSME 11+, CSTXE 3+ and CSSPS 4+
+- Ability to fully unpack CSE firmware CSME 11+, CSTXE 3+ and CSSPS 4+
 - Ability to validate Engine RSA Signature and Region table checksums
 - Advanced detection & validation of Engine region's firmware Size
 - Ability to detect & analyze Integrated Firmware Images (IFWI/BPDT)
-- Detection of CSME 11+ Flash Image Tool platform configuration by OEM
 - Detection of CSME 11 PCH-LP firmware Power Down Mitigation (PDM) erratum
 - Ability to analyze multiple files by drag & drop or by input path
 - Detection of unique Apple Macintosh Engine firmware "Slim" SKUs
 - Detection of multiple Engine regions in input file, number only
-- Detection of special Engine firmware BIOS GUIDs via UEFIFind
 - Ability to detect & categorize firmware which require attention
-- Supports CodeRush's UEFIFind & Lordkag's UEFIStrip utility integration
 - Reports all firmware which are not found at the Engine Firmware Repositories
 - Reports any new, unknown, problematic, incomplete etc Engine firmware images
 - Features command line parameters to enhance functionality & assist research
@@ -59,24 +59,16 @@ To use ME Analyzer, select one or multiple files and Drag & Drop them to its exe
 There are various parameters which enhance or modify the default behavior of ME Analyzer:
 
 * -?      : Displays help & usage screen
-* -skip   : Skips options intro screen
-* -check  : Copies files with messages to check
+* -skip   : Skips welcome & options screen
+* -exit   : Skips Press enter to exit prompt
+* -redir  : Enables console redirection support
 * -mass   : Scans all files of a given directory
-* -enuf   : Enables UEFIFind Engine GUID detection
-* -adir   : Sets UEFIFind to the previous directory
 * -pdb    : Writes input file DB entry to text file
 * -dbname : Renames input file based on unique DB name
-* -dfpt   : Shows info about the FPT and/or BPDT headers (Research)
-* -dsku   : Shows debug/verbose SKU detection info for CSME 11 (Research)
-* -unp86  : Unpacks all CSE Converged Security Engine firmware (Research)
-* -ext86  : Prints Extension info during CSE unpacking (Research)
-* -bug86  : Enables debug/verbose mode during CSE unpacking (Research)
-
-The following are Windows specific:
-
-* -extr   : Lordkag's UEFIStrip mode
-* -msg    : Prints only messages without headers
-* -hid    : Displays all firmware even without messages (-msg)
+* -dfpt   : Shows $FPT, BPDT and/or CSE Layout Table headers
+* -unp86  : Unpacks all CSE Converged Security Engine firmware
+* -bug86  : Enables debug/verbose mode during CSE unpacking
+* -ext86  : Prints all Extension info during CSE unpacking
 
 #### **B3. ME Analyzer Error Control**
 
@@ -84,38 +76,48 @@ During operation, ME Analyzer may encounter issues that can trigger Notes, Warni
 
 ## **C. Execute/Download ME Analyzer**
 
-ME Analyzer is developed using Python 3.6 and can work under Windows, Linux and macOS operating systems. It consists of two files, the executable (MEA.exe or MEA) and the database (MEA.dat). Regarding the executable, already built/frozen/compiled binaries are provided by me for Windows only (icon designed by [Those Icons](https://thoseicons.com/)). Thus, **you don't need to manually build/freeze/compile ME Analyzer under Windows**. Instead, download the latest version from the [Releases](https://github.com/platomav/MEAnalyzer/releases) tab, title should be "ME Analyzer v1.X.X". You may need to scroll down a bit if there are DB releases at the top. The latter can be used to update the outdated DB which was bunled with the latest executable release, title should be "DB rXX". For Linux and macOS or courageous Windows users, the build/freeze/compile instructions for all three OS can be found below.
+ME Analyzer is developed using Python 3.6 and can work under Windows, Linux and macOS operating systems. It consists of two files, the executable (MEA.exe or MEA) and the database (MEA.dat). Regarding the executable, already built/frozen/compiled binaries are provided by me for Windows only (icon designed by [Those Icons](https://thoseicons.com/)). Thus, **you don't need to manually build/freeze/compile ME Analyzer under Windows**. Instead, download the latest version from the [Releases](https://github.com/platomav/MEAnalyzer/releases) tab, title should be "ME Analyzer v1.X.X". You may need to scroll down a bit if there are DB releases at the top. The latter can be used to update the outdated DB which was bundled with the latest executable release, title should be "DB rXX". For Linux and macOS or courageous Windows users, the build/freeze/compile instructions for all three OS can be found below.
 
 **Note:** To extract the already built/frozen/compiled ME Analyzer archives, you need to use programs which support RAR5 compression!
 
 #### **C1. Compatibility**
 
-ME Analyzer has been tested to be compatible with Windows Vista-10, Ubuntu 16.04+ and macOS Sierra+ operating systems. It is generally expected to work at all Windows, Linux or macOS operating systems which have Python 3.6 support but feel free to test it. Any latter v3.x releases might work depending on whether MEA's prerequisites are also compatible. Windows Vista-8.1 users who plan to use the already built/frozen/compiled binaries must make sure that they have the latest Windows Updates installed which include all required "Universal C Runtime (CRT)" libraries.
+ME Analyzer should work at all Windows, Linux or macOS operating systems which have Python 3.6 support. Any latter v3.x releases might work depending on whether MEA's prerequisites are also compatible. Windows users who plan to use the already built/frozen/compiled binaries must make sure that they have the latest Windows Updates installed which include all required "Universal C Runtime (CRT)" libraries.
 
 #### **C2. Code Prerequisites**
 
 To run ME Analyzer's python script, you need to have the following 3rd party Python modules installed:
 
 * [Colorama](https://pypi.python.org/pypi/colorama/)
-* [PTable](https://github.com/kxxoling/PTable/tree/master/)
-* [Huffman11](https://github.com/IllegalArgument/Huffman11/)
+* [PTable](https://github.com/platomav/PTable/tree/boxchar)
 
 To build/freeze/compile ME Analyzer's python script, you can use whatever you like. The following are verified to work:
 
 * [Py2exe](https://pypi.python.org/pypi/py2exe/) (Windows)
 * [Py2app](https://pypi.python.org/pypi/py2app/) (macOS)
-* [PyInstaller](https://github.com/pyinstaller/pyinstaller/tree/master/) (Windows/Linux/macOS)
+* [PyInstaller](https://pypi.org/project/PyInstaller/) (Windows/Linux/macOS)
 
 #### **C3. Build/Freeze/Compile with PyInstaller**
 
 PyInstaller can build/freeze/compile ME Analyzer at all three supported platforms, it is simple to run and gets updated often.
 
-1. Make sure you have Python 3.6 installed
-2. Use pip to install colorama (PyPi)
-3. Use pip to install PTable (Github, master branch)
-4. Use pip to install PyInstaller (Github, master branch)
-5. Place huffman11.py at Huffman11 sub-directory (Github)
-6. Open a command prompt and execute:
+1. Make sure Python 3.6.0 or newer is installed:
+
+> python --version
+
+2. Use pip to install colorama (PyPi):
+
+> pip3 install colorama
+
+3. Use pip to install PTable (Github, boxchar branch):
+
+> pip3 install PTable-boxchar.zip
+
+4. Use pip to install PyInstaller (PyPi):
+
+> pip3 install pyinstaller
+
+5. Build/Freeze/Compile ME Analyzer:
 
 > pyinstaller --noupx --onefile MEA.py
 
@@ -123,15 +125,13 @@ At dist folder you should find the final MEA executable
 
 ## **D. Pictures**
 
-![](https://i.imgur.com/w0fWmPx.png)
+**Note:** Some pictures are outdated and depict older ME Analyzer versions.
+
+![](https://i.imgur.com/VOp78Or.png)
 
 ![](https://i.imgur.com/6UNqSe8.png)
 
 ![](https://i.imgur.com/9tnZ7lA.png)
-
-![](https://i.imgur.com/4FQlzXU.png)
-
-![](https://i.imgur.com/0fQ9YZF.png)
 
 ![](https://i.imgur.com/v46gBmR.png)
 
